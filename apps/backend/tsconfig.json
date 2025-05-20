@@ -7,9 +7,10 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@san-juan-store/types": ["../../packages/types/src"]
+      "@san-juan-store/types": ["../../packages/types/src"],
+      "src/*": ["./*"]
     },
     "composite": true,
     "typeRoots": ["./node_modules/@types", "./types"]

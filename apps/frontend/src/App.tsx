@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import {Link, Link2} from './components/Link'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    console.log('La cantidad es', count)
+  },[count]);
 
   return (
     <>
@@ -16,6 +21,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <Link url="https://react.dev" />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -28,6 +34,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Link url="https://react.dev" />
+      <Link url="https://react.dev" />
+      <Link url="https://react.dev" />
+      <Link url="https://react.dev" />
+      <Link2 url="prueba" />
     </>
   )
 }
