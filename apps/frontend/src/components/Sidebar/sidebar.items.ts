@@ -1,12 +1,36 @@
 import type { SidebarItemsType } from "./model";
 
 export const sidebarItems: SidebarItemsType = [
-    {text: 'hola mundo'},
-    {text: 'hola como vas'},
-    {text: 'si', items: [
-        {text: 'si'},
-        {text: 'puede ser'},
-        {text: 'sub item', items: [{text: 'sub item text'},{text: 'sub item text 2'}]}
-    ]},
-    {text: 'otro elemento mas'}
+  { text: 'Dashboard' },
+  { 
+    text: 'Usuarios', 
+    items: [
+      { text: 'Lista de usuarios' },
+      { text: 'Crear usuario' },
+      { 
+        text: 'Roles y permisos', 
+        items: [
+          { text: 'Roles' },
+          { text: 'Permisos' },
+        ]
+      },
+    ]
+  },
+  { 
+    text: 'Productos', 
+    items: [
+      { text: 'Inventario' },
+      { text: 'Categorías' },
+      { text: 'Agregar producto' },
+    ]
+  },
+  { 
+    text: 'Pedidos', 
+    items: [
+      { text: 'Pedidos pendientes' },
+      { text: 'Historial de pedidos' },
+    ]
+  },
+  { text: 'Reportes' },
+  { text: 'Configuración' },
 ]

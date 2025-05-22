@@ -3,7 +3,7 @@ import type { SingleItem } from '../model'
 
 function SingleComponent({item}: {item: SingleItem}) {
   return (
-    <p>{item.text}</p>
+    <button className='text-white fw-bold btn bg-transparent'>{item.text}</button>
   )
 }
 

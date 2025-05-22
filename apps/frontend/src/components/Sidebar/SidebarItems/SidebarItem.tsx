@@ -1,12 +1,12 @@
 import React from 'react'
 import type { DropdownItem, SingleItem } from '../model'
 import SingleComponent from './SingleComponent'
-import DropdownComponent from './DropdownComponent'
+import AccordeonComponent from './AccordeonComponent'
 
 
 function SidebarItem({item}: {item: DropdownItem | SingleItem}) {
   if ('items' in item) {
-    return <DropdownComponent item={item} />
+    return <AccordeonComponent item={item} />
   } 
 
   return <SingleComponent item={item} />

@@ -3,20 +3,22 @@ import type { DropdownItem, SingleItem, SidebarItemsType } from './model'
 import SidebarItem from './SidebarItems/SidebarItem';
 import './sidebar.css'
 
-function Sidebar({items}: {items: SidebarItemsType}) {
+function Sidebar({ items }: { items: SidebarItemsType }) {
   return (
-    <div className='sidebar w-25 bg-primary h-100'>
-      <div className='w-100 d-flex flex-column'>
-        <ul className='list-group'>
+    <div className='sidebar w-25 vh-100 bg-deep-burgundy text-white'>
+      <nav className='d-flex flex-column h-100'>
+        <ul className='list-unstyled m-0 p-3'>
           {
-          items.map((item, i) => {
-            return <li className='list-unstyled list-group-item-action'><SidebarItem item={item} key={i}/></li>
-          }) 
+            items.map((item, i) => (
+              <li key={i} className='mb-2'>
+                <SidebarItem item={item} />
+              </li>
+            ))
           }
         </ul>
-      </div>
+      </nav>
     </div>
   )
 }
 
-export default Sidebar
+export default Sidebar;
