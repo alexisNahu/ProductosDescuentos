@@ -1,8 +1,0 @@
-{
-  "name": "san_juan_store",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
-}
