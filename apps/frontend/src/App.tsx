@@ -1,12 +1,14 @@
 import { Outlet, Link } from 'react-router-dom';
 import "./index.css";
 
+
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <nav className="bg-white shadow px-4 py-3">
         <Link to="/" className="text-indigo-600 hover:underline mr-4">Home</Link> | &nbsp;
-        <Link to="/about" className="text-indigo-600 hover:underline">About</Link>
+        <Link to="/about" className="text-indigo-600 hover:underline">About</Link> | &nbsp;
+        <Link to="/osmargauto" className="text-indigo-600 hover:underline">Osmar Gauto</Link>
       </nav>
       <hr />
       <div className="flex-1">
