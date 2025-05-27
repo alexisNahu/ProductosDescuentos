@@ -1,6 +1,7 @@
 import { Sidebar } from './components'
 import { sidebarItems } from './components/Sidebar/sidebar.items'
 import AlexisComponent from './components/AlexisComponent/AlexisComponent'
+import WilsonComponent from './components/WilsonComponent/Wilsoncomponent'
 
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
           </div>
           <div className="col">
             <AlexisComponent a={2} b={2}/>
+            <WilsonComponent/>
+
           </div>
         </div>
       </div>
