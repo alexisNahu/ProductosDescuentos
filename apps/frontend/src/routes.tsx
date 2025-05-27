@@ -3,6 +3,7 @@ import App from './App';
 import Welcome from './pages/Welcome';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import SteffanyMelgarejo from './pages/SteffanyMelgarejo';
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login />,
+            },
+            {
+                path: 'steffany-melgarejo',
+                element: <SteffanyMelgarejo />,
             },
             {
                 path: '*',
