@@ -4,9 +4,10 @@ import { sidebarItems } from './components/Sidebar/sidebar.items'
 import AlexisComponent from './components/AlexisComponent/AlexisComponent'
 import ArecoComponent from './components/ArecoComponent/ArecoComponent'
 import WilsonComponent from './components/WilsonComponent/Wilsoncomponent'
+import IvanSosa from './components/IvanSosa/IvanSosa';
 import { Outlet, Link } from 'react-router-dom';
 import "./index.css";
-import IvanSosa from './components/IvanSosa/IvanSosa';
+
 export default function App() {
   return (
     
@@ -37,3 +38,4 @@ export default function App() {
     </div>
   );
 }
+
