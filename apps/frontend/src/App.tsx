@@ -8,48 +8,10 @@ import AlexisComponent from './components/AlexisComponent/AlexisComponent'
 import ArecoComponent from './components/ArecoComponent/ArecoComponent'
 import WilsonComponent from './components/WilsonComponent/Wilsoncomponent'
 import IvanSosa from './components/IvanSosa/IvanSosa';
+import JohnSuarez from './components/JohnSuarez/JohnSuarez';
 import RuleOfThreeCalculator from './components/RuleOfThreeCalculator'
 import { Outlet, Link } from 'react-router-dom';
 import "./index.css";
-
-function Home() {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    console.log('La cantidad es', count)
-  }, [count])
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <LinkComponent url="https://react.dev" />
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <LinkComponent url="https://react.dev" />
-      <LinkComponent url="https://react.dev" />
-      <LinkComponent url="https://react.dev" />
-      <LinkComponent url="https://react.dev" />
-      <Link2 url="prueba" />
-    </>
-  )
-}
 
 export default function App() {
   return (
@@ -80,6 +42,7 @@ export default function App() {
         </div>
       </>
       <IvanSosa></IvanSosa>
+      <JohnSuarez></JohnSuarez>
       <nav className="bg-white shadow px-4 py-3">
         <Link to="/" className="text-indigo-600 hover:underline mr-4">Home</Link> | &nbsp;
         <Link to="/about" className="text-indigo-600 hover:underline">About</Link> | &nbsp;
