@@ -25,7 +25,6 @@
     "zod": "^3.24.4"
   },
   "devDependencies": {
-    "@san-juan-store/types": "^1.0.0",
     "@types/jsonwebtoken": "^9.0.9",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
