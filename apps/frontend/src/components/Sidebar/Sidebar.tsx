@@ -5,7 +5,7 @@ import './sidebar.css'
 
 function Sidebar({ items }: { items: SidebarItemsType }) {
   return (
-    <div className='sidebar w-25 vh-100 bg-deep-burgundy text-white'>
+    <div className='sidebar w-50 vh-100 bg-deep-burgundy text-white'>
       <nav className='d-flex flex-column h-100'>
         <ul className='list-unstyled m-0 p-3'>
           {
