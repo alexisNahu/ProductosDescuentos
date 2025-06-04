@@ -1,4 +1,4 @@
-import { JwtUserPayload } from '@san-juan-store/types';
+import { JwtUserPayload } from './user';
 
 declare global {
     namespace Express {

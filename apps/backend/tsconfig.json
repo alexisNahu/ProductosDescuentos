@@ -9,16 +9,11 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@san-juan-store/types": ["../../packages/types/src"],
       "src/*": ["./*"]
     },
     "composite": true,
     "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": ["src/**/*"],
-  "references": [
-    {
-      "path": "../../packages/types"
-    }
-  ]
+  "references": []
 }

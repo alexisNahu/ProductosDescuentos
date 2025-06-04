@@ -7,7 +7,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@san-juan-store/types": ["../../packages/types/src"]
     }
   }
 }
