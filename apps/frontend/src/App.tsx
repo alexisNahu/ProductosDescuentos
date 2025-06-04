@@ -22,7 +22,10 @@ export default function App() {
             <div className="col">
               <AlexisComponent a={2} b={2} />
               <ArecoComponent frecuencia={60} capacitancia={0.000001} />
+              
+             
             </div>
+            
           </div>
         </div>
       </>
