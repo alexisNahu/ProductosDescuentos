@@ -10,7 +10,7 @@ import OsmarGauto from './pages/OsmarGauto';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Login />,
     children: [
       {
         index: true,
@@ -27,10 +27,6 @@ const router = createBrowserRouter([
       {
         path: 'steffany-melgarejo',
         element: <SteffanyMelgarejo />,
-      },
-      {
-        path: 'login',
-        element: <Login />,
       },
       {
         path: '*',
