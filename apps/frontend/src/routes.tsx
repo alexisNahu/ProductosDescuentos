@@ -3,6 +3,7 @@ import App from './App';
 import Welcome from './pages/Welcome';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
+import CreateUser from './pages/CreateUser';
 import SteffanyMelgarejo from './pages/SteffanyMelgarejo';
 import RossmaryVillalba from './pages/RossmaryVillalba';
 import OsmarGauto from './pages/OsmarGauto';
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'rossmary-villalba',
         element: <RossmaryVillalba />,
+      },
+      {
+        path: 'createuser',
+        element: <CreateUser />,
       },
       {
         path: 'osmargauto',

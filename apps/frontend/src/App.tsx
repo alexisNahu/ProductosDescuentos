@@ -24,9 +24,7 @@ export default function App() {
               <AlexisComponent a={2} b={2} />
               <ArecoComponent frecuencia={60} capacitancia={0.000001} />
                <Roles />
-             
             </div>
-            
           </div>
         </div>
       </>
