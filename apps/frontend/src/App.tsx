@@ -4,6 +4,7 @@ import { Sidebar } from './components'
 import { sidebarItems } from './components/Sidebar/sidebar.items'
 import AlexisComponent from './components/AlexisComponent/AlexisComponent'
 import ArecoComponent from './components/ArecoComponent/ArecoComponent'
+import Roles from './components/Roles';
 import IvanSosa from './components/IvanSosa/IvanSosa';
 import JohnSuarez from './components/JohnSuarez/JohnSuarez';
 import "./index.css";
@@ -22,7 +23,7 @@ export default function App() {
             <div className="col">
               <AlexisComponent a={2} b={2} />
               <ArecoComponent frecuencia={60} capacitancia={0.000001} />
-              
+               <Roles />
              
             </div>
             
