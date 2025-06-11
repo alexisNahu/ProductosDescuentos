@@ -1,56 +1,48 @@
+// src/controllers/products.ts
 import { Request, Response } from 'express';
-import db from '../db/connection';
+import { db } from '../db/connection';
+import { products } from '../db/schema';
+import { eq } from 'drizzle-orm';
 
-  let getAllProducts = async (req: Request, res: Response) => {
-    try {
-      const [rows] = await db.query('SELECT * FROM products');
-      res.json(rows);
-    } catch (error) {
-      res.status(500).json({ message: 'Error al obtener los productos' });
-    }
+export const getAllProducts = async (req: Request, res: Response) => {
+  try {
+    const allProducts = await db.select().from(products);
+    res.json(allProducts);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener los productos' });
   }
+};
 
-   let createProduct = async (req: Request, res: Response) => {
-    const { name, price } = req.body;
-    try {
-      const [result] = await db.query(
-        'INSERT INTO products (name, price) VALUES (?, ?)',
-        [name, price]
-      );
-      res.status(201).json({ id: (result as any).insertId, name, price });
-    } catch (error) {
-      res.status(500).json({ message: 'Error al crear el producto' });
-    }
+export const createProduct = async (req: Request, res: Response) => {
+  const { name, price } = req.body;
+  try {
+    const result = await db.insert(products).values({ name, price });
+    res.status(201).json({ message: 'Producto creado', result });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al crear el producto' });
   }
+};
 
-   let updateProduct = async (req: Request, res: Response)=> {
-    const { id } = req.params;
-    const { name, price } = req.body;
-    try {
-      await db.query(
-        'UPDATE products SET name = ?, price = ? WHERE id = ?',
-        [name, price, id]
-      );
-      res.json({ id, name, price });
-    } catch (error) {
-      res.status(500).json({ message: 'Error al actualizar el producto' });
-    }
+export const updateProduct = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { name, price } = req.body;
+  try {
+    await db.update(products)
+      .set({ name, price })
+      .where(eq(products.id, Number(id)));
+    res.json({ message: 'Producto actualizado' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al actualizar el producto' });
   }
+};
 
-   let deleteProduct = async (req: Request, res: Response) => {
-    const { id } = req.params;
-    try {
-      await db.query('DELETE FROM products WHERE id = ?', [id]);
-      res.json({ message: 'Producto eliminado correctamente' });
-    } catch (error) {
-      res.status(500).json({ message: 'Error al eliminar el producto' });
-    }
+export const deleteProduct = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    await db.delete(products)
+      .where(eq(products.id, Number(id)));
+    res.json({ message: 'Producto eliminado' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al eliminar el producto' });
   }
-
-
-  export {
-  createProduct,
-  updateProduct,
-  deleteProduct,
-  getAllProducts
 };

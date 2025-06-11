@@ -1,31 +1,34 @@
 import { Router } from 'express';
-import { authenticate } from '../middleware/auth';
-import { User } from '../controller/User';
+import { Request, Response } from 'express';
+import { login } from 'src/controller/auth.controller';
 import {
   createProduct,
   deleteProduct,
   getAllProducts,
   updateProduct,
 } from 'src/controller/product.controller';
+import verifyToken from 'src/middleware/auth';
 
 const router = Router();
 
 
-router.get('/dashboard', authenticate, (req, res) => {
-  res.json({ message: 'Ruta protegida', user: req.user });
+router.get('/dashboard', (req:Request, res:Response) => {
+  const response = {
+    message: 'Bienvenido a la API de la tienda',
+
+  };
+  res.json(response);
 });
 
 router.get('/status', (req, res) => {
   res.json({ status: 'OK' });
 });
 
-router.post('/login', (req, res) => {
-  User(req, res);
-});
+router.post('/login', login);
 
-router.get('/products', getAllProducts);
-router.post('/products', authenticate, createProduct);
-router.put('/products/:id', authenticate, updateProduct);
-router.delete('/products/:id', authenticate, deleteProduct);
+router.get('/products', verifyToken, getAllProducts);
+router.post('/products', verifyToken, createProduct);
+router.put('/products/:id', verifyToken, updateProduct);
+router.delete('/products/:id', verifyToken, deleteProduct);
 
 export default router;
