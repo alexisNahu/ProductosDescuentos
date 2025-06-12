@@ -26,6 +26,10 @@ router.get('/status', (req, res) => {
 
 router.post('/login', login);
 
+router.get('/me', verifyToken, (req, res) => {
+  res.json({ user: req.user });
+});
+
 router.get('/products', verifyToken, getAllProducts);
 router.post('/products', verifyToken, createProduct);
 router.put('/products/:id', verifyToken, updateProduct);

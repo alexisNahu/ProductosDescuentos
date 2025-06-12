@@ -1,28 +1,32 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Welcome from './pages/Welcome';
-import NotFound from './pages/NotFound';
-import Login from './pages/Login';
-import Jonas from './pages/Jonas';
+import { createBrowserRouter } from "react-router-dom";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Jonas from "./pages/Jonas";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Login />,
+  },
+  {
+    element: <ProtectedRoute />, // Agrupa rutas protegidas
     children: [
       {
-        index: true,
-        element: <Welcome />,
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       {
-        path: '*',
-        element: <NotFound />,
+        path: "/jonas",
+        element: <Jonas />,
       },
     ],
   },
   {
-    path: 'jonas',
-    element: <Jonas />,
-  }
+    path: "*",
+    element: <NotFound />,
+  },
 ]);
 
 export default router;

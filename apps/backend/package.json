@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn -r tsconfig-paths/register src/app.ts",
+    "dev": "tsx watch src/app.ts",
     "dev:watch": "nodemon --exec ts-node src/app.ts",
     "build": "tsc",
     "start": "node dist/app.js"
@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@types/express": "^5.0.1",
     "bcrypt": "^6.0.0",
@@ -23,15 +23,17 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.14.1",
-    "tsx": "^4.19.4",
     "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/cors": "^2.8.19",
     "@types/jsonwebtoken": "^9.0.9",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.20.1",
     "typescript": "^5.8.3"
   },
   "ts-node": {

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react"
 import api from "../libs/api"
-import { set } from "zod/v4"
-
 interface ItemInterface {
     id: number
     name: string
@@ -12,6 +10,7 @@ const Jonas = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             api.get("/products").then((response) => {
+                console.log(response.data);
                 setProductList(response.data);
             }).catch((error) => {
                 console.error(error);
@@ -20,43 +19,23 @@ const Jonas = () => {
 
         fetchProducts();
     }, []);
-    // const listFood: ItemInterface[] = [
-    //     {
-    //         id: 1,
-    //         name: "payagua",
-    //         description: 'food'
-    //     },
-    //     {
-    //         id: 2,
-    //         name: "pastel mandi'o",
-    //         description: 'food'
-    //     }
-    // ]
     return (
-        <>
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                Jonas
-            </h1>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-                {productList.map((food, id) => (
-                    <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96" key={id}>
-                        <div className="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
-                            <span className="text-sm text-slate-600 font-medium">
-                                {food.name}
-                            </span>
+        <div className="p-6 bg-gray-50 min-h-screen">
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">Jonas</h1>
+            {productList.length === 0 ? (
+                <p>No hay productos</p>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {productList.map((food) => (
+                        <div key={food.id} className="bg-white rounded shadow p-4">
+                            <h2 className="font-semibold">{food.name}</h2>
+                            <p className="text-gray-600">${food.price}</p>
                         </div>
-
-                        <div className="p-4">
-                            <p className="text-slate-600 leading-normal font-light">
-                                {food.price}
-                            </p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </>
-
-    )
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 }
 
 export default Jonas

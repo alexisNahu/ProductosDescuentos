@@ -8,7 +8,6 @@ export const login = async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
     try {
-        // Buscar usuario por username
         const user = await db.query.users.findFirst({
             where: (u, { eq }) => eq(u.username, username),
         });
@@ -16,21 +15,17 @@ export const login = async (req: Request, res: Response) => {
         if (!user) {
             res.status(401).json({ message: "Credenciales inválidas" });
         }
-
-        // Verificar contraseña
         const isMatch = await bcrypt.compare(password, user?.password || "");
         if (!isMatch) {
             res.status(401).json({ message: "Credenciales inválidas" });
         }
 
-        // Crear JWT
         const token = jwt.sign(
             { id: user?.id, username: user?.username },
             process.env.JWT_SECRET as string,
             { expiresIn: "1h" }
         );
 
-        // Guardar token en cookie HttpOnly
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
