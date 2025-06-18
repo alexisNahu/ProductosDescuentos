@@ -4,6 +4,7 @@ import NotFound from "./pages/NotFound";
 import Jonas from "./pages/Jonas";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import Alexis from "./pages/Alexis";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: "/jonas",
         element: <Jonas />,
       },
+      {
+        path: '/alexis',
+        element: <Alexis />
+      }
     ],
   },
   {
