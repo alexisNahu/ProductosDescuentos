@@ -8,6 +8,7 @@ import {
     primaryKey,
     uniqueIndex,
     index,
+    decimal,
 } from 'drizzle-orm/mysql-core';
 import { sql } from 'drizzle-orm';
 
@@ -35,9 +36,33 @@ export const user_tokens = mysqlTable('user_tokens', {
 
 // Tabla products
 export const products = mysqlTable('products', {
+  id: int('id').primaryKey().autoincrement(),
+  name: varchar('name', { length: 100 }).notNull(),
+  price: int('price').notNull(),
+  discount_id: int('discount_id').notNull(), // ✅ obligatorio
+}, (table) => ({
+  idx_discount: index('fk_products_discounts_idx').on(table.discount_id),
+}));
+
+// Tabla reports
+export const reports = mysqlTable(
+  'reports',
+  {
     id: int('id').primaryKey().autoincrement(),
-    name: varchar('name', { length: 100 }),
-    price: int('price'),
+    action_type: varchar('action_type', { length: 45 }).notNull(),
+    user_id: int('user_id').notNull(),
+    on_table: varchar('on_table', { length: 100 }).notNull(),  // <-- agregado aquí
+  },
+  (table) => ({
+    idx_user: index('reports_users_id_fk').on(table.user_id),
+    // Nota: La FK se configura en la migración o directamente en la DB
+  }),
+);
+
+//Tabla discounts
+export const discounts = mysqlTable('discounts', {
+  id: int('id').primaryKey().autoincrement(),
+  discount_rate: decimal('discount_rate', { precision: 5, scale: 4 }).notNull(), // ej: 0.15 = 15%
 });
 
 // Tabla permissions

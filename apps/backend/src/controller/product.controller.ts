@@ -6,7 +6,13 @@ import { eq } from 'drizzle-orm';
 
 export const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const allProducts = await db.select().from(products);
+    // Seleccionamos también el discount_id para que el cliente lo conozca
+    const allProducts = await db.select({
+      id: products.id,
+      name: products.name,
+      price: products.price,
+      discount_id: products.discount_id,
+    }).from(products);
     res.json(allProducts);
   } catch (error) {
     res.status(500).json({ message: 'Error al obtener los productos' });
@@ -14,9 +20,9 @@ export const getAllProducts = async (req: Request, res: Response) => {
 };
 
 export const createProduct = async (req: Request, res: Response) => {
-  const { name, price } = req.body;
+  const { name, price, discount_id } = req.body;
   try {
-    const result = await db.insert(products).values({ name, price });
+    const result = await db.insert(products).values({ name, price, discount_id });
     res.status(201).json({ message: 'Producto creado', result });
   } catch (error) {
     res.status(500).json({ message: 'Error al crear el producto' });
@@ -25,10 +31,10 @@ export const createProduct = async (req: Request, res: Response) => {
 
 export const updateProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { name, price } = req.body;
+  const { name, price, discount_id } = req.body;
   try {
     await db.update(products)
-      .set({ name, price })
+      .set({ name, price, discount_id })
       .where(eq(products.id, Number(id)));
     res.json({ message: 'Producto actualizado' });
   } catch (error) {
